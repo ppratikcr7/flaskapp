@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>SearchTool</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{{ url_for('static',filename='styles/css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{{ url_for('static',filename='styles/css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+      
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h3 class="header center orange-text">Welcome to Search Tool</h3>
+      <div class="row center">
+        <h5 class="header col s12 light"></h5>
+      </div>
+       <form id="search-form" action="{{ url_for('predict')}}" method="post">
+          <div class="file-field input-field">
+            <h5 class="header orange-text">Search String:</h5>
+            <input name='searchtext' type="text" id= "search_string" placeholder="Please enter the string you want to search in documents" required="required" value="{{ request.form['searchtext'] }}"/>
+            
+            <button class="btn" type="submit" id = 'search-button'>Search</button>
+            </div>
+          </div>
+      </form>
+      <br><br><br><br>
+      <h5 class="header center black-text"> {% autoescape false %} {{ result_text | replace('\n', '<br>') }} {% endautoescape %} </h5>
+    </div>
+  </div>
+  </body>
+</html>
