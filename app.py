@@ -81,4 +81,6 @@ def searchFunction():
     return render_template('index.html', result_text='The search string appears in : {}'.format(output), search_string= search_string[0])
 
 if __name__ == "__main__":
-    app.run()
+    #app.run(host="13.235.24.166", port= 5000)
+    PORT = int(os.environ.get('PORT', 5000))
+    app.run(host='13.235.24.166', port=PORT)
