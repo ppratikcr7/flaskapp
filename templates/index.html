@@ -24,7 +24,7 @@
       <div class="row center">
         <h5 class="header col s12 light"></h5>
       </div>
-       <form id="search-form" action="{{ url_for('predict')}}" method="post">
+       <form id="search-form" action="{{ url_for('searchFunction')}}" method="post">
           <div class="file-field input-field">
             <h5 class="header orange-text">Search String:</h5>
             <input name='searchtext' type="text" id= "search_string" placeholder="Please enter the string you want to search in documents" required="required" value="{{ request.form['searchtext'] }}"/>

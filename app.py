@@ -27,8 +27,13 @@ class Text_search:
             line_number=1
             flag_file = 0
             for line1 in file_t:
+
+                if len(line1) == 1:
+                    continue
+
                 if self.i:
                     line1 = line1.lower()
+                    
                 if re.search(self.string1, line1):
                     flag_file= 1
                     result = "The text '" + self.string1 + "' found in " + file + " at line number " + str(line_number)
@@ -54,8 +59,8 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/predict',methods=['POST'])
-def predict():
+@app.route('/searchFunction',methods=['POST'])
+def searchFunction():
     search_string = [str(x) for x in request.form.values()]
     print(search_string[0])
     # parser = argparse.ArgumentParser()
@@ -74,15 +79,6 @@ def predict():
     # total files are  2"
 
     return render_template('index.html', result_text='The search string appears in : {}'.format(output), search_string= search_string[0])
-
-@app.route('/results',methods=['POST'])
-def results():
-
-    data = request.get_json(force=True)
-    prediction = model.predict([np.array(list(data.values()))])
-
-    output = prediction[0]
-    return jsonify(output)
 
 if __name__ == "__main__":
     app.run()
