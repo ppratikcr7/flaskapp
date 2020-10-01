@@ -8,3 +8,5 @@ Run the below commands in terminal:
 2. conda activate gcv
 3. export GOOGLE_APPLICATION_CREDENTIALS=“path to ServiceAccountToken.json" // provided in zip
 4. Run python file : python GCV_PDFText.py
+
+###
